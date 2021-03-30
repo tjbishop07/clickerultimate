@@ -1,0 +1,23 @@
+{
+  "name": "clickerultimate.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "launcher.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjbishop07/clickerultimate.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tjbishop07/clickerultimate.github.io/issues"
+  },
+  "homepage": "https://github.com/tjbishop07/clickerultimate.github.io#readme",
+  "devDependencies": {
+    "electron": "^12.0.2"
+  }
+}
