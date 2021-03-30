@@ -19,5 +19,8 @@
   "homepage": "https://github.com/tjbishop07/clickerultimate.github.io#readme",
   "devDependencies": {
     "electron": "^12.0.2"
+  },
+  "dependencies": {
+    "tailwindcss": "^2.0.4"
   }
 }
