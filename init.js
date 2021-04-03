@@ -76,7 +76,8 @@ function newGame() {
                 //parent
                 clickGain: 1,
                 isActive: false,
-                locked: true
+                locked: true,
+                image: "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-1.2.1&ixqx=HBnc4MLjAu&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format"
             },
             waterP: {
                 name: "WaterProgress",
@@ -102,7 +103,8 @@ function newGame() {
                 max: 10,
                 clickGain: 1,
                 isActive: false,
-                locked: true
+                locked: true,
+                image: "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format"
             },
             woodP: {
                 name: "WoodProgress",
@@ -128,7 +130,8 @@ function newGame() {
                 max: 5,
                 clickGain: 1,
                 isActive: false,
-                locked: true
+                locked: true,
+                image: "https://images.unsplash.com/photo-1492724724894-7464c27d0ceb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80"
             },
             stoneP: {
                 name: "StoneProgress",
@@ -154,7 +157,8 @@ function newGame() {
                 max: 15,
                 clickGain: 1,
                 isActive: false,
-                locked: true
+                locked: true,
+                image: "https://images.unsplash.com/photo-1614705827065-62c3dc488f40?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80"
             },
             ironP: {
                 name: "IronProgress",

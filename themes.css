@@ -3,7 +3,7 @@
 /* Default Theme */
 /* https://www.color-hex.com/color-palette/12836 */
 body.defaultTheme {
-    --color1: #000e24; /* Background */
+    --color1: #4a0082; /* Background */
     --color1Alt: #000e24; /* Messages */
     --color2: #1b2c45; /* Container Background */
     --color2Contrast: gray; /* Resource Indicator Hover */
@@ -25,7 +25,7 @@ body.defaultTheme {
     --ribbon: gray; /* Ribbon Background */
     --ribbonClicked: silver; /* Ribbon clicked */
     --ribbonDisabled: darkgray; /* Ribbon Disabled */
-    --progressBar: #e60000; /* Progress Bar */
+    --progressBar: #4a0082; /* Progress Bar */
 }
 
 /* Night Theme */

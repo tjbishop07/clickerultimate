@@ -1,38 +1,72 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-/* General interface tools */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* body {
+	background: linear-gradient(-45deg, #ee7752, #7e2f4d, #a11414, #855d06);
+	background-size: 400% 400%;
+	animation: gradient 120s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+} */
+
 body {
-    overflow-y: hidden;
-    overflow-x: hidden;
-    font-family: 'Times New Roman', Times, serif;
+  background: url(bg.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 60px
+}
+.backdrop {
+  backdrop-filter: blur(5px);
+}
+.text-shadow {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 #topRow {
-    height: 45vh;
-    padding-bottom: 2vh;
+  height: 90vh;
+  padding-bottom: 2vh;
+  margin-top: 35px;
 }
 
 #midRow {
-    height: 45vh;
+  height: 45vh;
 }
 
 .row {
-    margin-right: -15px;
-    margin-left: -15px;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
-.area {
-    float: right;
-    height: 100%;
-    padding-right: 0;
-    margin-right: 15px;
+/* .area {
+  float: right;
+  padding-right: 0;
+  margin-right: 15px;
 }
 
 .container {
-    display: block;
-    overflow: hidden;
-    border-width: 1px;
-    border-style: solid;
-}
+  display: block;
+  overflow: hidden;
+  border-width: 1px;
+  border-style: dashed;
+  border-color: #fff;
+} */
 
 .button {
     text-align: center;
@@ -50,659 +84,650 @@ body {
 }
 
 .unclickable {
-    cursor: auto;
+  cursor: default;
+  opacity: .25
 }
 
-.locked, .bought {
-    display: none;
+.locked,
+.bought {
+  display: none;
 }
 
 #tooltipContainer {
-    z-index: 5;
-    width: 30vw;
-    position: absolute;
-    display: none;
-    padding: 5px;
-    border-width: 2px;
-    border-style: solid;
-    font-size: 1vw;
+  z-index: 5;
+  width: 30vw;
+  position: absolute;
+  display: none;
+  padding: 5px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 1vw;
+  background-color: #002951;
 }
 
 #tooltipTop {
-    text-align: center;
-    font-size: 110%;
-    font-weight: bold;
+  text-align: center;
+  font-size: 110%;
+  font-weight: bold;
 }
 
 #tooltipMain {
-    word-break: break-word;
+  word-break: break-word;
 }
 
 .tooltipSmaller {
-    font-size: 85%;
+  font-size: 85%;
 }
 
 hr {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border: 0;
-    border-top-style: dotted;
-    border-top-width: 1px;
-  }
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 0;
+  border-top-style: dotted;
+  border-top-width: 1px;
+}
 
-  ::-webkit-scrollbar {
-    width: 0.5vw;
-    height: 1vh;
+::-webkit-scrollbar {
+  width: 0.5vw;
+  height: 1vh;
 }
 
 /* Resource-related interface */
 #ResourcesArea {
-    width: calc(50vw - 30px);
-    overflow-y: auto;
+  width: calc(50vw - 30px);
+  overflow-y: auto;
 }
 
 .rsRow {
-    width: 100%;
-    display: inline-block;
-    line-height: 1vw;
-    font-size: 1vw;
-    padding: 0px 0px 10px;
+  width: 100%;
+  display: inline-block;
+  line-height: 1vw;
+  font-size: 1vw;
+  padding: 0px 0px 10px;
 }
 
 .rsBlock {
-    width: calc(50% - 10px);
-    height: auto;
-    padding: 0px 5px 0px;
-    float: left;
-    text-align: center;
+  width: calc(50% - 10px);
+  height: auto;
+  padding: 0px 5px 0px;
+  float: left;
+  text-align: center;
 }
 
 .rsIndicator {
-    height: 1.8vw;
-    font-size: 150%;
-    font-weight: bold;
-    line-height: 125%;
-    text-decoration: underline;
+  height: 1.8vw;
+  font-size: 150%;
+  font-weight: bold;
+  line-height: 125%;
+  text-decoration: underline;
 }
 
 .rsIndicator span:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .rsRate {
-    height: 1.2vw;
-    font-size: 120%;
+  height: 1.2vw;
+  font-size: 120%;
 }
 
 .rsGatherer {
-    height: calc(1.8vw - 2px);
-    font-size: 120%;
-    line-height: 150%;
-    border-width: 1px;
-    border-style: solid;
+  height: calc(1.8vw - 2px);
+  font-size: 120%;
+  line-height: 150%;
+  /* border-width: 1px;
+  border-style: solid; */
 }
-
-.rsBar {
-    width: 100%;
-    height: calc(1.2vw - 2px);
-    line-height: 120%;
-    background-color: black;
-    border-width: 1px 0px 1px 0px;
-    border-style: solid;
-    color: white;
-    text-align: center;
-    position: relative;
-}
-
 .rsStockBar {
-    height: 100%;
+  height: 100%;
 }
 
 .rsProgressBar {
-    height: 100%;
+  height: 100%;
 }
 
 .rsAnimated {
-    transition: width 80ms linear;
-	will-change: width;
+  transition: width 80ms linear;
+  will-change: width;
 }
 
 .rsCurrentTotal {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 #CurrentWaterBar {
-    background-color: darkblue;
+  background-color: darkblue;
 }
 
 #CurrentWoodBar {
-    background-color: darkgreen;
+  background-color: darkgreen;
 }
 
 #CurrentStoneBar {
-    background-color: gray;
+  background-color: gray;
 }
 
 #CurrentIronBar {
-    background-color: #B87333;
+  background-color: #b87333;
 }
 
 #CurrentWheatBar {
-    background-color: goldenrod;
+  background-color: goldenrod;
 }
 
 #CurrentSilverBar {
-    background-color: darkgray;
+  background-color: darkgray;
 }
 
 #CurrentDiamondBar {
-    background-color: steelblue;
+  background-color: steelblue;
 }
 
 /* Jobs-related interface */
 #JobsArea {
-    width: calc(50vw - 30px);
-    overflow-y: auto;
+  width: calc(50vw - 30px);
+  overflow-y: auto;
 }
 
 .jbTitle {
-    padding-left: 5px;
-    font-size: 1.2vw;
+  padding-left: 5px;
+  font-size: 1.2vw;
 }
 
 .jbOutline {
-    width: 100%;
-    display: inline-block;
+  width: 100%;
+  display: inline-block;
 }
 
 .jbOutline.locked {
-    display: none;
+  display: none;
 }
 
-.jbBlock {
-    width: calc(20% - 10px);
-    height: auto;
-    float: left;
-    padding: 5px;
-    font-size: 1vw;
-    position: relative;
+/* .jbBlock {
+  width: calc(20% - 10px);
+  height: auto;
+  float: left;
+  padding: 5px;
+  font-size: 1vw;
+  position: relative;
 }
 
 .jbButton {
-    position: relative;
-    width: 100%;
-    height: 3.25vw;
-    text-align: center;
-    box-sizing: border-box;
-    border-width: 1px;
-    border-style: solid;
-}
+  position: relative;
+  width: 100%;
+  height: 3.25vw;
+  text-align: center;
+  box-sizing: border-box;
+  /* border-width: 1px;
+  border-style: solid; */
+} */
 
 .jbAge.unclickable {
-    background-color: goldenrod;
-    border: 1px solid gray;
-    color: gray;
+  background-color: goldenrod;
+  border: 1px solid gray;
+  color: gray;
 }
 
 .jbAge.clickable {
-    background-color: gold;
-    border: 1px solid goldenrod;
-    color: black;
+  background-color: gold;
+  border: 1px solid goldenrod;
+  color: black;
 }
 
 .jbFree.clickable {
-    background-color: green;
-    border: 1px solid darkgreen;
-    color: white;
+  background-color: green;
+  border: 1px solid darkgreen;
+  color: white;
 }
 
 .jbIndicator {
-    height: calc(1.25vw - 2px);
-    line-height: calc(1.25vw - 2px);
-    border-width: 0px 0px 1px 0px;
-    border-style: dotted;
-    white-space: nowrap;
+  height: calc(1.25vw - 2px);
+  line-height: calc(1.25vw - 2px);
+  border-width: 0px 0px 1px 0px;
+  border-style: dotted;
+  white-space: nowrap;
 }
 
 .upgIndicator {
-    height: 100%;
-    line-height: 3.25vw;
-    outline-style: dotted;
-    outline-offset: -5px;
-    outline-width: 1px;
-    white-space: nowrap;
-    overflow: visible;
+  height: 100%;
+  line-height: 3.25vw;
+  outline-style: dotted;
+  outline-offset: -5px;
+  outline-width: 1px;
+  white-space: nowrap;
+  overflow: visible;
 }
 
 .jbCurrent {
-    height: 2vw;
-    line-height: 2vw;
+  height: 2vw;
+  line-height: 2vw;
 }
 
 .jbBlock.achBlock {
-    width: calc(33% - 10px);
+  width: calc(33% - 10px);
 }
 
 /* Advancement-Related Interface */
 #AdvancementsArea {
-    width: calc(50vw - 30px);
+  width: calc(50vw - 30px);
 }
 
 #AdvancementsArea hr {
-    margin-top: calc(1.2vw + 10px);
+  margin-top: calc(1.2vw + 10px);
 }
 
 #AdvancementsContainer {
-    height: calc(45vh - (1.2vw + 20px));
-    overflow-y: auto;
+  /* height: calc(45vh - (1.2vw + 20px)); */
+  overflow-y: auto;
 }
 
 .advTitle {
-    float: left;
-    padding-left: 8px;
-    font-size: 1.2vw;
+  float: left;
+  padding-left: 8px;
+  font-size: 1.2vw;
 }
 
-.advPointsIndicator {
-    float: right;
-    padding-right: 8px;
-    font-size: 1.2vw;
-}
+/* .advPointsIndicator {
+  float: right;
+  padding-right: 8px;
+  font-size: 1.2vw;
+} */
 
 .jbButton.advBought {
-    background-color: darkblue;
-    border-color: darkblue;
-    color: gold;
+  background-color: darkblue;
+  border-color: darkblue;
+  color: gold;
 }
 
 .jbButton.achButton {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .achButton.achAchieved {
-    color: gold;
+  color: gold;
 }
 
 .jbButton.ptgBought {
-    background-color: darkblue;
-    border-color: gold;
-    border-style: dotted;
-    color: gold;
+  background-color: darkblue;
+  border-color: gold;
+  border-style: dotted;
+  color: gold;
 }
 
 .jbButton.advBought .jbIndicator,
 .jbButton.ptgBought .jbIndicator {
-    border-color: gold;
+  border-color: gold;
 }
 
 /* Settings-Related interface */
 #MenuArea {
-    width: calc(50vw - 30px);
-    overflow: hidden;
+  width: calc(50vw - 30px);
+  overflow: hidden;
 }
 
 #MenuSpacer {
-    width: calc(50vw - 30px);
-    padding: 1px;
+  width: calc(50vw - 30px);
+  padding: 1px;
 }
 
 .mnuArea {
-    height: calc(100% - 10px);
-    padding: 0px 15px 10px;
+  height: calc(100% - 10px);
+  padding: 0px 15px 10px;
 }
 
 #MenuSelector {
-    width: 20%;
-    height: 100%;
-    float: left;
+  width: 20%;
+  height: 100%;
+  float: left;
 }
 
 .mnuButton {
-    border-style: solid;
-    border-width: 1px 2px 1px 0px;
-    height: calc(20% - 2px);
-    width: 100%;
-    font-size: 1vw;
-    line-height: 9vh;
-    overflow: hidden;
+  border-style: solid;
+  border-width: 1px 2px 1px 0px;
+  height: calc(20% - 2px);
+  width: 100%;
+  font-size: 1vw;
+  line-height: 9vh;
+  overflow: hidden;
 }
 
 .mnuButton.selected {
-    height: 20%;
-    background-color: transparent !important;
-    border-width: 0px;
-    pointer-events: none;
-    line-height: calc(9vh + 2px);
+  height: 20%;
+  background-color: transparent !important;
+  border-width: 0px;
+  pointer-events: none;
+  line-height: calc(9vh + 2px);
 }
 
 #MenuMainPanel {
-    height: 100%;
-    width: calc(80% - 2px);
-    float: right;
+  height: 100%;
+  width: calc(80% - 2px);
+  float: right;
 }
 
 #MenuMainPanel hr {
-    margin-left: 5vw;
-    margin-right: 5vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 
 .mnuTitle {
-    padding-top: 10px;
-    font-size: 1.2vw;
-    text-align: center;
+  padding-top: 10px;
+  font-size: 1.2vw;
+  text-align: center;
 }
 
 .mnuContainer {
-    height: calc(100% - 1.5vw - 31px);
-    width: calc(100% - 2px);
-    overflow-y: auto;
-    overflow-x: hidden;
+  height: calc(100% - 1.5vw - 31px);
+  width: calc(100% - 2px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .mnuContentButton {
-    width:50%;
-    float:left;
-    height: 1.5vw;
-    font-size: 1vw;
-    line-height: 1.5vw;
-    border-width: 1px;
-    border-style: solid;
-    margin-bottom: 5px;
-    white-space: nowrap;
+  width: 50%;
+  float: left;
+  height: 1.5vw;
+  font-size: 1vw;
+  line-height: 1.5vw;
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 5px;
+  white-space: nowrap;
 }
 
 .mnuContentButton:hover + .mnuContentInfo {
-    background-color:rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .mnuContentInfo {
-    float: left;
-    padding: 1px 0px 1px 15px;
-    line-height: 1.5vw;
-    font-size: 1vw;
-    width: calc(50% - 17px);
-    white-space: nowrap;
-    margin-bottom: 5px;
+  float: left;
+  padding: 1px 0px 1px 15px;
+  line-height: 1.5vw;
+  font-size: 1vw;
+  width: calc(50% - 17px);
+  white-space: nowrap;
+  margin-bottom: 5px;
 }
 
-#PrestigeContainer,
+/* #PrestigeContainer,
 #AchievementsContainer {
-    height: calc(100% - 3vw - 34px);
-    padding-bottom: 5px;
-}
+  height: calc(100% - 3vw - 34px);
+  padding-bottom: 5px;
+} */
 
 .jbBlock.ptgBlock {
-    width: calc(25% - 10px);
+  width: calc(25% - 10px);
 }
 
 .ptgColonyButton {
-    width: calc(50% - 4px);
-    float:left;
-    height: 1.5vw;
-    font-size: 1vw;
-    line-height: 1.5vw;
-    border-width: 1px;
-    border-style: solid;
-    white-space: nowrap;
+  width: calc(50% - 4px);
+  float: left;
+  height: 1.5vw;
+  font-size: 1vw;
+  line-height: 1.5vw;
+  border-width: 1px;
+  border-style: solid;
+  white-space: nowrap;
 }
 
 .ptgColonyLabel,
 .achPointsLabel {
-    float: right;
-    width:50%;
-    text-align: right;
-    font-size: 1.2vw;
-    line-height: 1.5vw;
-    padding: 1px;
+  float: right;
+  width: 50%;
+  text-align: right;
+  font-size: 1.2vw;
+  line-height: 1.5vw;
+  padding: 1px;
 }
 
 .ptgColonyLabel div,
 .achPointsLabel div {
-    display: inline;
+  display: inline;
 }
 
 .mnuStatsLabel {
-    width:50%;
-    float:left;
-    font-size: 1vw;
-    line-height: 1.5vw;
-    margin-bottom: 5px;
-    white-space: nowrap;
-    text-align: right;
+  width: 50%;
+  float: left;
+  font-size: 1vw;
+  line-height: 1.5vw;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  text-align: right;
 }
 
 .mnuStatsInfo {
-    float: left;
-    padding-left: 15px;
-    line-height: 1.5vw;
-    font-size: 1vw;
-    width: calc(50% - 15px);
-    white-space: nowrap;
-    margin-bottom: 5px;
-    text-align: left;
+  float: left;
+  padding-left: 15px;
+  line-height: 1.5vw;
+  font-size: 1vw;
+  width: calc(50% - 15px);
+  white-space: nowrap;
+  margin-bottom: 5px;
+  text-align: left;
 }
 
-#MessagesContainer{
-    background-color: rgba(255,255,255,0.4);
+#MessagesContainer {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .msgFontSmall .msgBlock {
-    font-size: 0.7vw;
+  font-size: 0.7vw;
 }
 
 .msgFontNormal .msgBlock {
-    font-size: 0.8vw;
+  font-size: 0.8vw;
 }
 
 .msgFontLarge .msgBlock {
-    font-size: 0.9vw;
+  font-size: 0.9vw;
 }
 
 .msgFontLarger .msgBlock {
-    font-size: 1vw;
+  font-size: 1vw;
 }
 
 .msgFontHuge .msgBlock {
-    font-size: 1.2vw;
+  font-size: 1.2vw;
 }
 
 .msgBlock {
-    margin: 0px;
-    padding: 5px;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+  /* margin: 0px;
+  padding: 5px; */
+  /* border-top: 1px solid;
+  border-bottom: 1px solid; */
 }
 
 .msgBlock.msgWarning {
-    font-weight: bold;
-    border-right: 15px solid;
-    border-right-color: rgba(139, 0, 0, 0.6);
-    background-color: rgba(255, 0, 0, 0.1);
+  font-weight: bold;
+  border-right: 15px solid;
+  border-right-color: rgba(139, 0, 0, 0.6);
+  background-color: rgba(255, 0, 0, 0.1);
 }
 
 .msgBlock.msgSave {
-    font-weight: bold;
-    border-right: 15px solid;
-    border-right-color: rgba(0, 100, 0, 0.6);
-    background: rgba(0, 255, 0, 0.1);
+  font-weight: bold;
+  border-right: 15px solid;
+  border-right-color: rgba(0, 100, 0, 0.6);
+  background: rgba(0, 255, 0, 0.1);
 }
 
 .msgBlock.msgTutorial {
-    border-right: 15px solid;
-    border-right-color: rgba(184, 134, 11, 0.6);
-    background: rgba(255, 255, 0, 0.1);
+  border-right: 15px solid;
+  border-right-color: rgba(184, 134, 11, 0.6);
+  background: rgba(255, 255, 0, 0.1);
 }
 
 #mnuMessagesLabel {
-    float: left;
-    padding-left: calc(10% + 5px);
-    width: calc(80% - 10px);
+  float: left;
+  padding-left: calc(10% + 5px);
+  width: calc(80% - 10px);
 }
 
-#mnuUnreadMessages {
-    float: right;
-    width: 10%;
-    padding-right: 5px;
-    text-align: center;
-    font-size: 75%;
-}
+/* #mnuUnreadMessages {
+  float: right;
+  width: 10%;
+  padding-right: 5px;
+  text-align: center;
+  font-size: 75%;
+} */
 
 /* Button bar at the bottom */
 #bottomRibbon {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 5vh;
-    line-height: 5vh;
-    font-size: 1vw;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5vh;
+  line-height: 5vh;
+  font-size: 1vw;
 }
 
 .ribbonButton {
-    float: left;
-    border-width: 2px 1px 0px 1px;
-    border-style: solid;
-    height: 100%;
-    width: calc(10% - 2px);
+  float: left;
+  border-width: 2px 1px 0px 1px;
+  border-style: solid;
+  height: 100%;
+  width: calc(10% - 2px);
 }
 
 #autosaveButton.autosaveON {
-    background-color: green;
+  background-color: green;
 }
 
 #autosaveButton.autosaveON:active {
-    background-color: mediumseagreen;
+  background-color: mediumseagreen;
 }
 
 #versionButton {
-    font-style: italic;
+  font-style: italic;
 }
 
 #pauseButton.pauseON {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #pauseButton.pauseON:active {
-    background-color: lightcoral;
+  background-color: lightcoral;
 }
 
 /* Modal windows */
 #bgDisable {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 #bgDisable.menuAllowed {
-    height: calc(100% - 5vh);
+  height: calc(100% - 5vh);
 }
 
 .mdHide {
-    display: none;
+  display: none;
 }
 
 .mdShow {
-    display: block;
+  display: block;
 }
 
 .mdButton {
-    float: left;
-    height: 1vw;
-    line-height: 1vw;
-    width: unset;
-    padding: 5px;
-    border-width: 2px;
-    border-style: solid;
-    margin-right: 10px;
+  float: left;
+  height: 1vw;
+  line-height: 1vw;
+  width: unset;
+  padding: 5px;
+  border-width: 2px;
+  border-style: solid;
+  margin-right: 10px;
 }
 
 .mdRed {
-    color: white;
-    background-color: red;
+  color: white;
+  background-color: red;
 }
 
 .mdRed:active {
-    background-color: lightcoral;
+  background-color: lightcoral;
 }
 
 .mdGreen {
-    background-color: green;
+  background-color: green;
 }
 
 .mdGreen:active {
-    background-color: lightgreen;
+  background-color: lightgreen;
 }
 
 .mdGray {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 .mdGray:active {
-    background-color: silver;
+  background-color: silver;
 }
 
 .mdTextArea {
-    resize: none;
-    width: calc(30vw - 5px);
-    height: 20vh;
-    font-size: 1vw;
+  resize: none;
+  width: calc(30vw - 5px);
+  height: 20vh;
+  font-size: 1vw;
 }
 
 #achievementPill {
-    position: fixed;
-    background-color: black;
-    color: white;
-    left: 50%;
-    bottom: 10%;
-    line-height: 1vw;
-    font-size: 1vw;
-    white-space: nowrap;
-    transform: translate(-50%, 0);
-    text-align: center;
-    padding: 10px;
-    box-shadow: 4px 4px 5px 0px #1f1f1f;
-    padding-left: 4vw;
-    border: 1px solid #333333;
-    border-radius: 2.5vw 10px 10px 2.5vw;
-    padding-right: 1vw;
+  position: fixed;
+  background-color: black;
+  color: white;
+  left: 50%;
+  bottom: 10%;
+  line-height: 1vw;
+  font-size: 1vw;
+  white-space: nowrap;
+  transform: translate(-50%, 0);
+  text-align: center;
+  padding: 10px;
+  box-shadow: 4px 4px 5px 0px #1f1f1f;
+  padding-left: 4vw;
+  border: 1px solid #333333;
+  border-radius: 2.5vw 10px 10px 2.5vw;
+  padding-right: 1vw;
 }
 
 #achievementPill span {
-    display: block;
-    height: 1vw;
+  display: block;
+  height: 1vw;
 }
 
 #achievementPill .left {
-    width: 2.5vw;
-    height: 2.5vw;
-    position: fixed;
-    left: 0.5vw;
-    top: 2vh;
-    border-radius: 100%;
-    border: 2px dotted gold;
+  width: 2.5vw;
+  height: 2.5vw;
+  position: fixed;
+  left: 0.5vw;
+  top: 2vh;
+  border-radius: 100%;
+  border: 2px dotted gold;
 }
 
 #achPoints {
-    line-height: 2vw;
-    font-size: 2vw;
-    padding-top: 0.25vw;
+  line-height: 2vw;
+  font-size: 2vw;
+  padding-top: 0.25vw;
 }
 
 #achIndicator {
-    margin-bottom: 2vh;
-    padding-bottom: 1vh;
-    border-bottom: 2px dotted gold;
-    color: gold;
+  margin-bottom: 2vh;
+  padding-bottom: 1vh;
+  border-bottom: 2px dotted gold;
+  color: gold;
 }
 
 #achLabel {
-    font-size: 0.9vw;
+  font-size: 0.9vw;
 }
 
 /* Fancy Graphics Setting */
@@ -711,64 +736,64 @@ hr {
 .fancy .rsBar,
 .fancy .rsStockBar,
 .fancy .rsProgressBar {
-    border-radius: 4px;
+  border-radius: 4px;
 }
 
 .fancy .button.mnuButton,
 .fancy .button.ribbonButton {
-    border-radius: 0px;
+  border-radius: 0px;
 }
 
 .fancy .mnuTitle,
 .fancy .advTitle {
-    text-shadow: 5px 5px 5px rgb(0 0 0 / 50%);
+  text-shadow: 5px 5px 5px rgb(0 0 0 / 50%);
 }
 
 .fancy .rsIndicator {
-    text-shadow: 0px 0px 15px rgb(0 0 0);
+  text-shadow: 0px 0px 15px rgb(0 0 0);
 }
 
 .fancy #CurrentIronBar {
-    box-shadow: inset 0px 2px 10px rgb(0 0 0 / 30%);
+  box-shadow: inset 0px 2px 10px rgb(0 0 0 / 30%);
 }
 
 .fancy #CurrentSilverBar,
 .fancy #CurrentDiamondBar {
-    box-shadow: inset 0px 2px 10px rgb(255 255 255 / 30%);
+  box-shadow: inset 0px 2px 10px rgb(255 255 255 / 30%);
 }
 
 .fancy .ttContainer {
-    box-shadow: 8px 8px 10px rgb(0 0 0 / 30%);
+  box-shadow: 8px 8px 10px rgb(0 0 0 / 30%);
 }
 
 .fancy .jbButton,
 .fancy .rsGatherer,
 .fancy .mnuContentButton,
 .fancy .mnuButton {
-    box-shadow: inset 5px 5px 10px rgb(255 255 255 / 15%),
-                inset -5px -5px 10px rgb(0 0 0 / 15%);
+  box-shadow: inset 5px 5px 10px rgb(255 255 255 / 15%),
+    inset -5px -5px 10px rgb(0 0 0 / 15%);
 }
 
 .fancy .jbButton.clickable:active,
 .fancy .rsGatherer.clickable:active,
 .fancy .mnuContentButton.clickable:active,
 .fancy .mnuButton.clickable:active {
-    box-shadow: inset 5px 5px 10px rgb(0 0 0 / 15%),
-                inset -5px -5px 10px rgb(255 255 255 / 15%);
+  box-shadow: inset 5px 5px 10px rgb(0 0 0 / 15%),
+    inset -5px -5px 10px rgb(255 255 255 / 15%);
 }
 
 .fancy .mnuButton.selected {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .fancy .ribbonButton {
-    box-shadow: inset 0px 5px 5px 5px rgb(255 255 255 / 10%),
-                inset 0px -5px 5px 5px rgb(0 0 0 / 10%);
+  box-shadow: inset 0px 5px 5px 5px rgb(255 255 255 / 10%),
+    inset 0px -5px 5px 5px rgb(0 0 0 / 10%);
 }
 
 .fancy .ribbonButton:active {
-    box-shadow: inset 0px 5px 5px 5px rgb(0 0 0 / 10%),
-                inset 0px -5px 5px 5px rgb(255 255 255 / 10%);
+  box-shadow: inset 0px 5px 5px 5px rgb(0 0 0 / 10%),
+    inset 0px -5px 5px 5px rgb(255 255 255 / 10%);
 }
 
 /* Browser compatibility fixes */
@@ -779,7 +804,144 @@ hr {
 .advTitle,
 .advPointsIndicator,
 #achievementPill {
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.stage {
+  perspective: 9999px;
+  transform-style: preserve-3d;
+  top: 125px
+}
+
+.layer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  /* animation: ಠ_ಠ 25s infinite alternate ease-in-out -64.5s;
+  animation-fill-mode: forwards; */
+  transform: rotateY(5deg) rotateX(3deg) translateZ(0);
+}
+
+.layer:after {
+  font: 40px/0.35 "Pacifico", "Kaushan Script", Futura, "Roboto", "Trebuchet MS", Helvetica, sans-serif;
+  content: "Clicker Ultimate!";
+  white-space: pre;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  color: whitesmoke;
+  letter-spacing: 2px;
+  text-shadow: 4px 0 5px rgba(0, 0, 0, 0.13);
+  line-height: 40px;
+}
+
+.layer:nth-child(1):after {
+  transform: translateZ(0px);
+}
+
+.layer:nth-child(2):after {
+  transform: translateZ(-1.5px);
+}
+
+.layer:nth-child(3):after {
+  transform: translateZ(-3px);
+}
+
+.layer:nth-child(4):after {
+  transform: translateZ(-4.5px);
+}
+
+.layer:nth-child(5):after {
+  transform: translateZ(-6px);
+}
+
+.layer:nth-child(6):after {
+  transform: translateZ(-7.5px);
+}
+
+.layer:nth-child(7):after {
+  transform: translateZ(-9px);
+}
+
+.layer:nth-child(8):after {
+  transform: translateZ(-10.5px);
+}
+
+.layer:nth-child(9):after {
+  transform: translateZ(-12px);
+}
+
+.layer:nth-child(10):after {
+  transform: translateZ(-13.5px);
+}
+
+.layer:nth-child(11):after {
+  transform: translateZ(-15px);
+}
+
+.layer:nth-child(12):after {
+  transform: translateZ(-16.5px);
+}
+
+.layer:nth-child(13):after {
+  transform: translateZ(-18px);
+}
+
+.layer:nth-child(14):after {
+  transform: translateZ(-19.5px);
+}
+
+.layer:nth-child(15):after {
+  transform: translateZ(-21px);
+}
+
+.layer:nth-child(16):after {
+  transform: translateZ(-22.5px);
+}
+
+.layer:nth-child(17):after {
+  transform: translateZ(-24px);
+}
+
+.layer:nth-child(18):after {
+  transform: translateZ(-25.5px);
+}
+
+.layer:nth-child(19):after {
+  transform: translateZ(-27px);
+}
+
+.layer:nth-child(20):after {
+  transform: translateZ(-28.5px);
+}
+
+.layer:nth-child(n+10):after {
+  -webkit-text-stroke: 3px rgba(0, 0, 0, 0.25);
+}
+
+.layer:nth-child(n+11):after {
+  -webkit-text-stroke: 10px dodgerblue;
+  text-shadow: 6px 0 6px #00366b, 5px 5px 5px #002951, 0 6px 6px #00366b;
+}
+
+.layer:nth-child(n+12):after {
+  -webkit-text-stroke: 9px #0077ea;
+}
+
+.layer:last-child:after {
+  -webkit-text-stroke: 9px rgba(0, 0, 0, 0.1);
+}
+
+.layer:first-child:after {
+  color: #fff;
+  text-shadow: none;
+}
+
+@keyframes ಠ_ಠ {
+  100% {
+    transform: rotateY(40deg) rotateX(33deg);
+  }
 }
