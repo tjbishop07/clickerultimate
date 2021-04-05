@@ -2645,82 +2645,47 @@ function addResourceBlock(res) {
   )
     return;
 
-  var elem =
-    '<div id="' +
-    resource.name +
-    'Block" class="relative backdrop bg-white hover:bg-gray-900 bg-opacity-10 p-2 text-white shadow cursor-pointer active:bg-gray-800 select-none" onmousedown="autoClick(\'' +
-    resP +
-    "')\" onmouseup=\"cancelAutoClick('" +
-    resP +
-    '\')" onmouseleave="cancelAutoClick()">' +
-    '<div class ="text-3xl text-white font-bold select-none">' +
-    '<span id="' +
-    resource.name +
-    'Indicator" onclick="tooltip(\'' +
-    res +
-    '\')" onmouseleave="tooltip()">' +
-    resource.label +
-    "</span>" +
-    "</div>" +
-    '<div class="absolute right-2 top-2 select-none ">' +
-    '<span id="' +
-    resource.name +
-    'DisplayRate" class="text-xs text-gray-200 rounded font-bold p-1">' +
-    getResRate(resource) +
-    "</span>" +
-    "</div>" +
-    '<div id="' +
-    resource.name +
-    'Bar" class="w-full h-8 rounded p-1 mt-4">' +
-    '<div id="Current' +
-    resource.name +
-    'Bar" class="rsStockBar rsAnimated" style="width: ' +
-    GetPercent(resource.current, resource.max) +
-    '%;">' +
-    '<div class="rsCurrentTotal text-xs opacity-75 ml-1 mt-1 font-bold h-7 select-none">' +
-    '<span id="Current' +
-    resource.name +
-    '">' +
-    prettify(resource.current, 0, true) +
-    "</span>" +
-    "<span>/</span>" +
-    '<span id="Max' +
-    resource.name +
-    '">' +
-    prettify(resource.max, 0, true) +
-    "</span>" +
-    "</div>" +
-    "</div>" +
-    "</div>" +
-    '<div id="' +
-    childResource.name +
-    'Bar" class="w-1/4 h-2 rounded bg-white absolute right-3 top-8">' +
-    '<div id="Current' +
-    childResource.name +
-    'Bar" class="rsProgressBar rsAnimated rounded bg-gradient-to-r from-green-400 to-blue-500" style="width: ' +
-    GetPercent(childResource.current, childResource.max) +
-    '%;">' +
-    '<div class="rsCurrentTotal hidden">' +
-    '<span id="Current' +
-    childResource.name +
-    '">' +
-    prettify(childResource.current, 0, true) +
-    "</span>" +
-    "<span>/</span>" +
-    '<span id="Max' +
-    childResource.name +
-    '">' +
-    prettify(childResource.max, 0, true) +
-    "</span>" +
-    "</div>" +
-    "</div>" +
-    "</div>" +
-    // + "<button class=\"mt-2 h-10 rounded w-full bg-gradient-to-r from-green-400 to-blue-500 font-bold text-white clickable\">"
-    // + "<span>Gather</span>"
-    // + "</button>"
-    "</div>";
+  var tmp_elem = `<div id="${resource.name}Block" class="container mx-auto max-w-xs rounded-lg overflow-hidden shadow-lg my-2 bg-gray-400 backdrop bg-opacity-10">` +
+                  '  <div class="relative mb-12">' +
+                  '  <div class="w-full absolute h-full bg-black bg-opacity-50"></div>' +
+                  `    <img class="w-full h-40" src="${resource.image}" alt="${resource.label}" />` +
+                  '    <div class="text-center absolute w-full" style="bottom: -20px">' +
+                  '        <div class="mb-5">' +
+                  `          <p class="text-white tracking-wide uppercase text-3xl font-bold">${resource.label}</p>` +
+                  `          <p id="${resource.name}DisplayRate" class="text-gray-100 text-sm p-1 font-bold">${getResRate(resource)}</p>` +
+                  '        </div>' +
+                  '        <button class="harvestButton p-4 rounded-full cursor-pointer z-11 focus:outline-none" onmousedown="autoClick(\'' + resP + "')\" onmouseup=\"cancelAutoClick('" + resP + '\')" onmouseleave="cancelAutoClick()">' +
+                  '          <svg viewBox="0 0 20 20" enable-background="new 0 0 20 20" class="w-6 h-6">' +
+                  '              <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601' +
+                  '                C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399' +
+                  '                C15.952,9,16,9.447,16,10z" />' +
+                  '          </svg>' +
+                  '        </button>' +
+                  '    </div>' +
+                  '  </div>' +
+                  '  <div class="-mt-12">' +
 
-  document.getElementById("ResourcesContainer").innerHTML += elem;
+                  '<div id="' + childResource.name + 'Bar" class="h-1 bg-gray-900 mt-7">' +
+                  '<div id="Current' + childResource.name + 'Bar" class="rsProgressBar rsAnimated bg-gradient-to-r from-green-400 to-blue-500" style="width: ' + GetPercent(childResource.current, childResource.max) + '%;">' +
+                  '<div class="rsCurrentTotal hidden">' +
+                  '<span id="Current' + childResource.name + '">' + prettify(childResource.current, 0, true) + "</span><span>/</span>" +
+                  '<span id="Max' + childResource.name + '">' + prettify(childResource.max, 0, true) + "</span>" +
+                  "</div></div></div>" +
+
+                  '<div id="' + resource.name + 'Bar" class="w-full h-10">' +
+                  '<div id="Current' + resource.name + 'Bar" class="rsStockBar rsAnimated" style="width: ' + GetPercent(resource.current, resource.max) + '%;">' +
+                  '<div class="rsCurrentTotal text-xs text-left mt-3 ml-2 font-bold h-10 select-none">' +
+                  '<span id="Current' + resource.name + '">' + prettify(resource.current, 0, true) + "</span><span>/</span>" +
+                  '<span id="Max' + resource.name + '">' + prettify(resource.max, 0, true) + "</span>" +
+                  "</div>" +
+                  "</div>" +
+                  "</div>" +
+
+                  '  </div>' +
+                '</div>';
+
+
+  document.getElementById("ResourcesContainer").innerHTML += tmp_elem;
 }
 
 /**
@@ -2752,8 +2717,7 @@ function addWorkerBlock(wor) {
     "</span>" +
     "</div>" +
     '<div class="text-md flex-1 mt-2">' +
-    "<span>" +
-    worker.label +
+    "<span>" + worker.label +
     "</span>" +
     // "<span class=\"absolute right-3 bottom-2 text-xs bg-gray-900 rounded-full p-1\">" + getCostLabel(worker) + "</span>" +
     "</div>" +
@@ -2892,14 +2856,14 @@ function addAdvancementBlock(adv) {
 
   if (!document.getElementById(parent.name + "advTitle")) {
     var parentElem =
-    //   '<div id="' + parent.name + 'advTitle" class="col-span-3 text-white">' + (!advancement.secret ? parent.label : "???") + "</div>" +
-      '<div id="' + parent.name + 'advContainer" class="w-100"></div>';
+      '<div id="' + parent.name + 'advTitle" class="col-span-3 text-white text-2xl">' + (!advancement.secret ? parent.label : "???") + "</div>" +
+      '<div id="' + parent.name + 'advContainer" class="m-2"></div>';
     document.getElementById("AdvancementsContainer").innerHTML += parentElem;
   } else if (!advancement.secret)
     document.getElementById(parent.name + "advTitle").innerHTML = parent.label;
   var elem =
-    '<div id="' + advancement.name +'Block" class="relative">' +
-    '<div id="' + advancement.name + 'Button" class="bg-white text-center ' + (advancement.bought ? "opacity-50 " : "") + '" ' +
+    '<div id="' + advancement.name +'Block" class="w-full">' +
+    '<div id="' + advancement.name + 'Button" class="backdrop bg-white bg-opacity-75 text-center ' + (advancement.bought ? "opacity-50 " : "cursor-pointer") + '" ' +
     "onmouseover=\"tooltip('" + adv + '\', event)" onmouseleave="tooltip()" ' + "onclick=\"clickBuy('" + adv + "')\">" +
     '<div class="upgIndicator">' +
     "<span>" + advancement.label + "</span>" +

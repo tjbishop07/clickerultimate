@@ -77,7 +77,7 @@ function newGame() {
                 clickGain: 1,
                 isActive: false,
                 locked: true,
-                image: "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-1.2.1&ixqx=HBnc4MLjAu&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format"
+                image: "https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
             },
             waterP: {
                 name: "WaterProgress",
@@ -104,7 +104,7 @@ function newGame() {
                 clickGain: 1,
                 isActive: false,
                 locked: true,
-                image: "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format"
+                image: "https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3150&q=80"
             },
             woodP: {
                 name: "WoodProgress",
@@ -184,7 +184,8 @@ function newGame() {
                 max: 2000,
                 clickGain: 1,
                 isActive: false,
-                locked: true
+                locked: true,
+                image: "https://images.unsplash.com/photo-1437252611977-07f74518abd7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2167&q=80"
             },
             wheatP: {
                 name: "WheatProgress",
@@ -210,7 +211,8 @@ function newGame() {
                 max: 200,
                 clickGain: 1,
                 isActive: false,
-                locked: true
+                locked: true,
+                image: "https://images.unsplash.com/photo-1485207942280-52442adf437e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2802&q=80"
             },
             silverP: {
                 name: "SilverProgress",
@@ -239,7 +241,8 @@ function newGame() {
                 max: 1000,
                 clickGain: 1,
                 isActive: false,
-                locked: true
+                locked: true,
+                image: "https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3582&q=80"
             },
             diamondP: {
                 name: "DiamondProgress",

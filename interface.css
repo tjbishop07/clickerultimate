@@ -310,25 +310,39 @@ hr {
   width: calc(33% - 10px);
 }
 
+.harvestButton {
+  background-color: #6617cb;
+  background-image: linear-gradient(315deg, #6617cb 0%, #cb218e 74%);
+  box-shadow: 0 0 0 0 #ec008c, 0.2rem 0.2rem 30px #08020f;
+  border: solid 4px rgba(255,255,255,.5)
+  }
+  /* .harvestButton:hover {
+  box-shadow: 0 0 0 0 #ec008c, 0.2rem 0.2rem 60px #6617cb;
+  } */
+  .harvestButton:active {
+    box-shadow: none;
+    border: solid 5px #fff
+    }
+
 /* Advancement-Related Interface */
-#AdvancementsArea {
+/* #AdvancementsArea {
   width: calc(50vw - 30px);
-}
+} */
 
 #AdvancementsArea hr {
   margin-top: calc(1.2vw + 10px);
 }
 
-#AdvancementsContainer {
+/* #AdvancementsContainer {
   /* height: calc(45vh - (1.2vw + 20px)); */
   overflow-y: auto;
-}
+} */
 
-.advTitle {
+/* .advTitle {
   float: left;
   padding-left: 8px;
   font-size: 1.2vw;
-}
+} */
 
 /* .advPointsIndicator {
   float: right;
@@ -731,13 +745,13 @@ hr {
 }
 
 /* Fancy Graphics Setting */
-.fancy .container,
+/* .fancy .container,
 .fancy .button,
 .fancy .rsBar,
 .fancy .rsStockBar,
 .fancy .rsProgressBar {
   border-radius: 4px;
-}
+} */
 
 .fancy .button.mnuButton,
 .fancy .button.ribbonButton {
