@@ -159,7 +159,6 @@ function updateDeleteSaveSetting() {
   //   .hardResetExposed
   //   ? "Exposed"
   //   : "Hidden";
-
   // if (game.settings.hardResetExposed) {
   //   document.getElementById("deleteSaveButton").innerHTML =
   //     "<span>Delete Save</span>";
@@ -404,52 +403,53 @@ function sendMessages() {
   var messages = game.global.messages;
 
   // for (var i = 0; i < number; i++) {
-    var message = messages[0];
-    // if (typeof message !== "object" || !message.content) continue;
-    var elem = '<li class="msgBlock ';
-    if (message.type == "save") {
-      elem += "msgSave";
-      var paras = document.getElementsByClassName("msgSave");
-      while (paras[0]) {
-        paras[0].parentNode.removeChild(paras[0]);
-      }
-      number--;
-    } else if (message.type == "warning") elem += "msgWarning";
-    else if (message.type == "tutorial") elem += "msgTutorial";
+  var message = messages[0];
+  // if (typeof message !== "object" || !message.content) continue;
+  var elem = '<li class="msgBlock ';
+  if (message.type == "save") {
+    elem += "msgSave";
+    var paras = document.getElementsByClassName("msgSave");
+    while (paras[0]) {
+      paras[0].parentNode.removeChild(paras[0]);
+    }
+    number--;
+  } else if (message.type == "warning") elem += "msgWarning";
+  else if (message.type == "tutorial") elem += "msgTutorial";
 
-
-    elem += '<li class="mb-2 z-9">' +
+  elem +=
+    '<li class="mb-2 z-9">' +
     '<div class="relative pb-8">' +
     '  <div class="relative flex items-end">' +
     '    <div class="relative z-10 bg-white bg-opacity-25 rounded-full p-1">' +
     '      <img class="h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center" src="system.jpg" alt="">' +
-    '    </div>' +
+    "    </div>" +
     '    <div class="min-w-0 flex-1 backdrop bg-gray-900 bg-opacity-25 p-4 z-9 -ml-4 pl-10 text-white rounded-lg">' +
-    '      <div>' +
+    "      <div>" +
     '        <div class="text-sm">' +
-  '          <a href="#" class="font-medium opacity-50">System</a>' +
-    '        </div>' +
-    '       <p class="mt-0.5 opacity-75">' + new Date().toLocaleTimeString() + '</p>' +
-    '      </div>' +
+    '          <a href="#" class="font-medium opacity-50">System</a>' +
+    "        </div>" +
+    '       <p class="mt-0.5 opacity-75">' +
+    new Date().toLocaleTimeString() +
+    "</p>" +
+    "      </div>" +
     '      <div class="mt-2 text-sm">' +
-    '      <p>' + message.content +
-    '        </p>' +
-    '      </div>' +
-    '    </div>' +
-  '   </div>' +
-  '  </div>' +
-  '</li>';
+    "      <p>" +
+    message.content +
+    "        </p>" +
+    "      </div>" +
+    "    </div>" +
+    "   </div>" +
+    "  </div>" +
+    "</li>";
 
+  // elem += '"> <div class="relative pb-8"><span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span><div class="relative flex items-start">' + message.content + "</div></div></li>";
 
+  // var container = document.getElementById("MessagesContainer");
+  var container = document.getElementById("topMessagesContainer");
+  container.innerHTML = elem;
 
-    // elem += '"> <div class="relative pb-8"><span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span><div class="relative flex items-start">' + message.content + "</div></div></li>";
-
-    // var container = document.getElementById("MessagesContainer");
-    var container = document.getElementById("topMessagesContainer");
-    container.innerHTML = elem;
-
-    // container.innerHTML += elem;
-    // container.scrollTop = container.scrollHeight;
+  // container.innerHTML += elem;
+  // container.scrollTop = container.scrollHeight;
   // }
   game.global.messages = [];
   if (game.settings.selectedMenu == "messages") return;
@@ -842,7 +842,7 @@ function updateUnreadMessages() {
   if (number != "")
     number =
       game.global.unreadMessages > 99 ? "99+" : game.global.unreadMessages;
-//   document.getElementById("mnuUnreadMessages").innerHTML = number;
+  //   document.getElementById("mnuUnreadMessages").innerHTML = number;
 }
 
 /**
@@ -2530,7 +2530,7 @@ function updateContainer(what) {
       }
       break;
     case "workers":
-      document.getElementById("WorkersContainer").innerHTML = '';
+      document.getElementById("WorkersContainer").innerHTML = "";
       for (var wor in game.workers) {
         if (game.workers[wor].locked) continue;
         elems = [
@@ -2598,7 +2598,7 @@ function updateContainer(what) {
       }
       break;
     case "advancements":
-      document.getElementById("AdvancementsContainer").innerHTML = "<li></li>";
+      document.getElementById("AdvancementsContainer").innerHTML = "";
       for (var adv in game.advancements) {
         if (game.advancements[adv].locked) continue;
         elems = ["mnuStatsLabelAdvancements", "mnuStatsCurrentAdvancements"];
@@ -2645,45 +2645,78 @@ function addResourceBlock(res) {
   )
     return;
 
-  var tmp_elem = `<div id="${resource.name}Block" class="container mx-auto max-w-xs rounded-lg overflow-hidden shadow-lg my-2 bg-gray-400 backdrop bg-opacity-10">` +
-                  '  <div class="relative mb-12">' +
-                  '  <div class="w-full absolute h-full bg-black bg-opacity-50"></div>' +
-                  `    <img class="w-full h-40" src="${resource.image}" alt="${resource.label}" />` +
-                  '    <div class="text-center absolute w-full" style="bottom: -20px">' +
-                  '        <div class="mb-5">' +
-                  `          <p class="text-white tracking-wide uppercase text-3xl font-bold">${resource.label}</p>` +
-                  `          <p id="${resource.name}DisplayRate" class="text-gray-100 text-sm p-1 font-bold">${getResRate(resource)}</p>` +
-                  '        </div>' +
-                  '        <button class="harvestButton p-4 rounded-full cursor-pointer z-11 focus:outline-none" onmousedown="autoClick(\'' + resP + "')\" onmouseup=\"cancelAutoClick('" + resP + '\')" onmouseleave="cancelAutoClick()">' +
-                  '          <svg viewBox="0 0 20 20" enable-background="new 0 0 20 20" class="w-6 h-6">' +
-                  '              <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601' +
-                  '                C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399' +
-                  '                C15.952,9,16,9.447,16,10z" />' +
-                  '          </svg>' +
-                  '        </button>' +
-                  '    </div>' +
-                  '  </div>' +
-                  '  <div class="-mt-12">' +
-
-                  '<div id="' + childResource.name + 'Bar" class="h-1 bg-gray-900 mt-7">' +
-                  '<div id="Current' + childResource.name + 'Bar" class="rsProgressBar rsAnimated bg-gradient-to-r from-green-400 to-blue-500" style="width: ' + GetPercent(childResource.current, childResource.max) + '%;">' +
-                  '<div class="rsCurrentTotal hidden">' +
-                  '<span id="Current' + childResource.name + '">' + prettify(childResource.current, 0, true) + "</span><span>/</span>" +
-                  '<span id="Max' + childResource.name + '">' + prettify(childResource.max, 0, true) + "</span>" +
-                  "</div></div></div>" +
-
-                  '<div id="' + resource.name + 'Bar" class="w-full h-10">' +
-                  '<div id="Current' + resource.name + 'Bar" class="rsStockBar rsAnimated" style="width: ' + GetPercent(resource.current, resource.max) + '%;">' +
-                  '<div class="rsCurrentTotal text-xs text-left mt-3 ml-2 font-bold h-10 select-none">' +
-                  '<span id="Current' + resource.name + '">' + prettify(resource.current, 0, true) + "</span><span>/</span>" +
-                  '<span id="Max' + resource.name + '">' + prettify(resource.max, 0, true) + "</span>" +
-                  "</div>" +
-                  "</div>" +
-                  "</div>" +
-
-                  '  </div>' +
-                '</div>';
-
+  var tmp_elem =
+    `<div id="${resource.name}Block" class="container mx-auto max-w-xs rounded-lg overflow-hidden shadow-lg my-2 bg-gray-400 backdrop bg-opacity-10">` +
+    '  <div class="relative mb-12">' +
+    '  <div class="w-full absolute h-full bg-black bg-opacity-50"></div>' +
+    `    <img class="w-full h-40" src="${resource.image}" alt="${resource.label}" />` +
+    '    <div class="text-center absolute w-full" style="bottom: -20px">' +
+    '        <div class="mb-5">' +
+    `          <p class="text-white tracking-wide uppercase text-3xl font-bold">${resource.label}</p>` +
+    `          <p id="${
+      resource.name
+    }DisplayRate" class="text-gray-100 text-sm p-1 font-bold">${getResRate(
+      resource
+    )}</p>` +
+    "        </div>" +
+    '        <button class="harvestButton p-4 rounded-full cursor-pointer z-11 focus:outline-none" onmousedown="autoClick(\'' +
+    resP +
+    "')\" onmouseup=\"cancelAutoClick('" +
+    resP +
+    '\')" onmouseleave="cancelAutoClick()">' +
+    '          <svg viewBox="0 0 20 20" enable-background="new 0 0 20 20" class="w-6 h-6">' +
+    '              <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601' +
+    "                C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399" +
+    '                C15.952,9,16,9.447,16,10z" />' +
+    "          </svg>" +
+    "        </button>" +
+    "    </div>" +
+    "  </div>" +
+    '  <div class="-mt-12">' +
+    '<div id="' +
+    childResource.name +
+    'Bar" class="h-1 bg-gray-900 mt-7">' +
+    '<div id="Current' +
+    childResource.name +
+    'Bar" class="rsProgressBar rsAnimated bg-gradient-to-r from-green-400 to-blue-500" style="width: ' +
+    GetPercent(childResource.current, childResource.max) +
+    '%;">' +
+    '<div class="rsCurrentTotal hidden">' +
+    '<span id="Current' +
+    childResource.name +
+    '">' +
+    prettify(childResource.current, 0, true) +
+    "</span><span>/</span>" +
+    '<span id="Max' +
+    childResource.name +
+    '">' +
+    prettify(childResource.max, 0, true) +
+    "</span>" +
+    "</div></div></div>" +
+    '<div id="' +
+    resource.name +
+    'Bar" class="w-full h-10">' +
+    '<div id="Current' +
+    resource.name +
+    'Bar" class="rsStockBar rsAnimated" style="width: ' +
+    GetPercent(resource.current, resource.max) +
+    '%;">' +
+    '<div class="rsCurrentTotal text-xs text-left mt-3 ml-2 font-bold h-10 select-none">' +
+    '<span id="Current' +
+    resource.name +
+    '">' +
+    prettify(resource.current, 0, true) +
+    "</span><span>/</span>" +
+    '<span id="Max' +
+    resource.name +
+    '">' +
+    prettify(resource.max, 0, true) +
+    "</span>" +
+    "</div>" +
+    "</div>" +
+    "</div>" +
+    "  </div>" +
+    "</div>";
 
   document.getElementById("ResourcesContainer").innerHTML += tmp_elem;
 }
@@ -2717,7 +2750,8 @@ function addWorkerBlock(wor) {
     "</span>" +
     "</div>" +
     '<div class="text-md flex-1 mt-2">' +
-    "<span>" + worker.label +
+    "<span>" +
+    worker.label +
     "</span>" +
     // "<span class=\"absolute right-3 bottom-2 text-xs bg-gray-900 rounded-full p-1\">" + getCostLabel(worker) + "</span>" +
     "</div>" +
@@ -2856,17 +2890,36 @@ function addAdvancementBlock(adv) {
 
   if (!document.getElementById(parent.name + "advTitle")) {
     var parentElem =
-      '<div id="' + parent.name + 'advTitle" class="col-span-3 text-white text-2xl">' + (!advancement.secret ? parent.label : "???") + "</div>" +
-      '<div id="' + parent.name + 'advContainer" class="m-2"></div>';
+      '<div id="' +
+      parent.name +
+      'advTitle" class="col-span-3 text-white text-2xl">' +
+      (!advancement.secret ? parent.label : "???") +
+      "</div>" +
+      '<div id="' +
+      parent.name +
+      'advContainer" class="m-2"></div>';
     document.getElementById("AdvancementsContainer").innerHTML += parentElem;
   } else if (!advancement.secret)
     document.getElementById(parent.name + "advTitle").innerHTML = parent.label;
   var elem =
-    '<div id="' + advancement.name +'Block" class="w-full">' +
-    '<div id="' + advancement.name + 'Button" class="backdrop bg-white bg-opacity-75 text-center ' + (advancement.bought ? "opacity-50 " : "cursor-pointer") + '" ' +
-    "onmouseover=\"tooltip('" + adv + '\', event)" onmouseleave="tooltip()" ' + "onclick=\"clickBuy('" + adv + "')\">" +
+    '<div id="' +
+    advancement.name +
+    'Block" class="w-full">' +
+    '<div id="' +
+    advancement.name +
+    'Button" class="backdrop bg-white bg-opacity-75 text-center ' +
+    (advancement.bought ? "opacity-50 " : "cursor-pointer") +
+    '" ' +
+    "onmouseover=\"tooltip('" +
+    adv +
+    '\', event)" onmouseleave="tooltip()" ' +
+    "onclick=\"clickBuy('" +
+    adv +
+    "')\">" +
     '<div class="upgIndicator">' +
-    "<span>" + advancement.label + "</span>" +
+    "<span>" +
+    advancement.label +
+    "</span>" +
     "</div>" +
     "</div>" +
     "</div>" +
@@ -2916,10 +2969,30 @@ function addPrestigeBlock(ptg) {
   if (!prestige || document.getElementById(prestige.name + "Block")) return;
 
   var elem =
-    '<div id="' + prestige.name + 'Block" class="backdrop cursor-pointer bg-white bg-opacity-10 p-2 text-white shadow-md m-2">' +
-    '<div id="' + prestige.name + 'Button" class="text-white" ' + "onmouseover=\"tooltip('" + ptg + '\', event)" onmouseleave="tooltip()" ' + "onclick=\"clickBuy('" + ptg + "')\">" +
-    '<div class="text-white font-bold text-lg">' + prestige.label + "</div>" +
-    '<div class="text-gray-100 text-xl">' + '<span id="' + prestige.name + 'CurrentLevel">' + prestige.level + "/" + prestige.maxLevel + "</span>" + "</div>" +
+    '<div id="' +
+    prestige.name +
+    'Block" class="backdrop cursor-pointer bg-white bg-opacity-10 p-2 text-white shadow-md m-2">' +
+    '<div id="' +
+    prestige.name +
+    'Button" class="text-white" ' +
+    "onmouseover=\"tooltip('" +
+    ptg +
+    '\', event)" onmouseleave="tooltip()" ' +
+    "onclick=\"clickBuy('" +
+    ptg +
+    "')\">" +
+    '<div class="text-white font-bold text-lg">' +
+    prestige.label +
+    "</div>" +
+    '<div class="text-gray-100 text-xl">' +
+    '<span id="' +
+    prestige.name +
+    'CurrentLevel">' +
+    prestige.level +
+    "/" +
+    prestige.maxLevel +
+    "</span>" +
+    "</div>" +
     "</div>" +
     "</div>";
 
@@ -2945,11 +3018,21 @@ function addPrestigeBlock(ptg) {
  */
 function addAchievementBlock(ach) {
   var achievement = getFromText(ach);
-  if (!achievement || document.getElementById(achievement.name + "Block")) return;
-  var label = !achievement.achieved && achievement.hidden ? "???" : achievement.label;
+  if (!achievement || document.getElementById(achievement.name + "Block"))
+    return;
+  var label =
+    !achievement.achieved && achievement.hidden ? "???" : achievement.label;
   var elem =
-    '<div id="' + achievement.name + 'Block" class="backdrop cursor-pointer bg-white bg-opacity-10 p-2 text-white shadow-md" onmouseover="tooltip(\'' + ach + '\', event)" onmouseleave="tooltip()">' +
-    '<div id="' + achievement.name + 'Button" class="text-center text-lg font-bold py-2"><span>' + label + '</span></div></div>';
+    '<div id="' +
+    achievement.name +
+    'Block" class="backdrop cursor-pointer bg-white bg-opacity-10 p-2 text-white shadow-md" onmouseover="tooltip(\'' +
+    ach +
+    '\', event)" onmouseleave="tooltip()">' +
+    '<div id="' +
+    achievement.name +
+    'Button" class="text-center text-lg font-bold py-2"><span>' +
+    label +
+    "</span></div></div>";
 
   document.getElementById("AchievementsContainer").innerHTML += elem;
 }
@@ -3347,14 +3430,14 @@ function updateMenuInterface() {
   // document.getElementById("mnuAchievementsButton").classList.remove("selected");
   // document.getElementById("mnuPrestigeButton").classList.remove("selected");
   // document.getElementById("mnuSettingsButton").classList.remove("selected");
-//   document.getElementById("MessagesArea").classList.add("locked");
+  //   document.getElementById("MessagesArea").classList.add("locked");
   // document.getElementById("StatisticsArea").classList.add("locked");
   // document.getElementById("AchievementsArea").classList.add("locked");
   // document.getElementById("PrestigeArea").classList.add("locked");
   // document.getElementById("SettingsArea").classList.add("locked");
 
   updateUnreadMessages();
-//   document.getElementById("MessagesArea").classList.remove("locked");
+  //   document.getElementById("MessagesArea").classList.remove("locked");
   document.getElementById(
     "topMessagesContainer"
   ).scrollTop = document.getElementById("topMessagesContainer").scrollHeight;
@@ -4407,61 +4490,59 @@ function hasParent(what) {
   return true;
 }
 
-var showAdvancements = false;
+var showAdvancements = true;
 function toggleAdvancements() {
   if (showAdvancements) {
-    document.getElementById("AdvancementsContainer").classList.add("hidden");
-    document.getElementById("advancementsButton").classList.remove('bg-indigo-900');
+    document.getElementById("panelAdvancements").classList.remove("hidden");
     showAdvancements = false;
   } else {
-    document.getElementById("AdvancementsContainer").classList.remove("hidden");
-    document.getElementById("advancementsButton").classList.add('bg-indigo-900');
+    document.getElementById("panelAdvancements").classList.add("hidden");
     showAdvancements = true;
   }
 }
 
 var showGameDetails = true;
 function toggleSettings() {
-    if (showGameDetails) {
-        document.getElementById("panelGameDetails").classList.remove("hidden");
-        showGameDetails = false;
-      } else {
-        document.getElementById("panelGameDetails").classList.add("hidden");
-        showGameDetails = true;
-      }
+  if (showGameDetails) {
+    document.getElementById("panelGameDetails").classList.remove("hidden");
+    showGameDetails = false;
+  } else {
+    document.getElementById("panelGameDetails").classList.add("hidden");
+    showGameDetails = true;
+  }
 }
 
 var showStats = true;
 function toggleStats() {
-    if (showStats) {
-        document.getElementById("panelStats").classList.remove("hidden");
-        showStats = false;
-      } else {
-        document.getElementById("panelStats").classList.add("hidden");
-        showStats = true;
-      }
+  if (showStats) {
+    document.getElementById("panelStats").classList.remove("hidden");
+    showStats = false;
+  } else {
+    document.getElementById("panelStats").classList.add("hidden");
+    showStats = true;
+  }
 }
 
 var showAchievements = true;
 function toggleAchievements() {
-    if (showAchievements) {
-        document.getElementById("panelAchievements").classList.remove("hidden");
-        showAchievements = false;
-      } else {
-        document.getElementById("panelAchievements").classList.add("hidden");
-        showAchievements = true;
-      }
+  if (showAchievements) {
+    document.getElementById("panelAchievements").classList.remove("hidden");
+    showAchievements = false;
+  } else {
+    document.getElementById("panelAchievements").classList.add("hidden");
+    showAchievements = true;
+  }
 }
 
 var showPrestige = true;
 function togglePrestige() {
-    if (showPrestige) {
-        document.getElementById("panelPrestige").classList.remove("hidden");
-        showPrestige = false;
-      } else {
-        document.getElementById("panelPrestige").classList.add("hidden");
-        showPrestige = true;
-      }
+  if (showPrestige) {
+    document.getElementById("panelPrestige").classList.remove("hidden");
+    showPrestige = false;
+  } else {
+    document.getElementById("panelPrestige").classList.add("hidden");
+    showPrestige = true;
+  }
 }
 
 //override newGame data

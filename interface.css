@@ -329,15 +329,6 @@ hr {
   width: calc(50vw - 30px);
 } */
 
-#AdvancementsArea hr {
-  margin-top: calc(1.2vw + 10px);
-}
-
-/* #AdvancementsContainer {
-  /* height: calc(45vh - (1.2vw + 20px)); */
-  overflow-y: auto;
-} */
-
 /* .advTitle {
   float: left;
   padding-left: 8px;
