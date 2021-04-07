@@ -29,5 +29,8 @@
     "postcss": "^8.2.8",
     "postcss-loader": "^5.2.0",
     "tailwindcss": "^2.0.4"
+  },
+  "dependencies": {
+    "sound-play": "^1.1.0"
   }
 }

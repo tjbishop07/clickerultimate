@@ -25,6 +25,7 @@ Add setting to automatically purchase free upgrades
 /**
  * Controls the flow of the game by calling the main game loop.
  */
+
 function gameTimeout() {
   var tick = 1000 / game.global.speed;
   if (game.global.isPaused) {
@@ -1192,7 +1193,30 @@ function clickResource(what, isAuto = false) {
  *
  * @param {string} what The type of resource targeted.
  */
+// var audio = new Audio("./clickb2.mp3");
+
 function autoClick(what) {
+  var new_elem = document.createElement("span");
+  var rnd_num_x = Math.floor(Math.random() * (screen.width / 2));
+  var rnd_num_y = Math.floor(Math.random() * 100);
+  new_elem.className = "fader";
+  new_elem.style = `width: 15px; height: 15px; position: absolute; margin-left: ${rnd_num_x}px; top: ${screen.height - 100 - rnd_num_y}px`;
+  new_elem.innerHTML =
+    '          <svg viewBox="0 0 15 15" enable-background="new 0 0 20 20" class="w-3 h-3">' +
+    '              <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601' +
+    "                C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399" +
+    '                C15.952,9,16,9.447,16,10z" />' +
+    "          </svg>";
+  document.body.appendChild(new_elem);
+  setTimeout(() => {
+    new_elem.className = "fader fadedOut";
+    setTimeout(
+      () => document.body.removeChild(new_elem),
+      1100
+    );
+  }, 100);
+
+  // audio.play();
   game.global.autoClickingRes = what;
   if (game.player.autoClick < 1) return;
   game.global.autoClicking = "start";
@@ -2518,6 +2542,8 @@ function hideUI() {
  *
  * @param {string} what The container to refresh.
  */
+var xpos;
+var ypos;
 function updateContainer(what) {
   var elems = [];
   switch (what) {
@@ -2646,7 +2672,7 @@ function addResourceBlock(res) {
     return;
 
   var tmp_elem =
-    `<div id="${resource.name}Block" class="container mx-auto max-w-xs rounded-lg overflow-hidden shadow-lg my-2 bg-gray-400 backdrop bg-opacity-10">` +
+    `<div id="${resource.name}Block" class="container relative mx-auto max-w-xs rounded-lg overflow-hidden shadow-lg my-2 bg-gray-400 backdrop bg-opacity-10">` +
     '  <div class="relative mb-12">' +
     '  <div class="w-full absolute h-full bg-black bg-opacity-50"></div>' +
     `    <img class="w-full h-40" src="${resource.image}" alt="${resource.label}" />` +
@@ -2759,6 +2785,17 @@ function addWorkerBlock(wor) {
     "</div>";
 
   document.getElementById("WorkersContainer").innerHTML += elem;
+  document.getElementById(worker.name + "Block").onmousemove = (mouseEvent) => {
+    if (mouseEvent) {
+      //FireFox
+      xpos = mouseEvent.screenX;
+      ypos = mouseEvent.screenY;
+    } else {
+      //IE
+      xpos = window.event.screenX;
+      ypos = window.event.screenY;
+    }
+  };
 }
 
 /**
