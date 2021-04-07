@@ -1,6 +1,6 @@
 {
-  "name": "clickerultimate",
-  "version": "1.0.0",
+  "name": "clicker_ultimate",
+  "version": "1.0.2",
   "description": "The ultimate clicker game.",
   "main": "launcher.js",
   "scripts": {
