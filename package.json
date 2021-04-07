@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tjbishop07/react-example"
+    "url": "git+https://github.com/tjbishop07/clickerultimate.github.io"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tjbishop07/react-example/issues"
+    "url": "https://github.com/tjbishop07/clickerultimate.github.io"
   },
-  "homepage": "https://github.com/tjbishop07/react-example#readme",
+  "homepage": "https://github.com/tjbishop07/clickerultimate.github.io",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
     "@electron-forge/maker-deb": "^6.0.0-beta.54",
