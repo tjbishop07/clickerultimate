@@ -4,7 +4,9 @@
   "description": "",
   "main": "launcher.js",
   "scripts": {
-    "start": "npx tailwindcss-cli@latest build -o tailwind.css && electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "postcss": {
     "plugins": {
@@ -24,6 +26,11 @@
   },
   "homepage": "https://github.com/tjbishop07/clickerultimate.github.io#readme",
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "autoprefixer": "^10.2.5",
     "electron": "^12.0.2",
     "postcss": "^8.2.8",
@@ -31,6 +38,34 @@
     "tailwindcss": "^2.0.4"
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "sound-play": "^1.1.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "clickerultimate.github.io"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }
