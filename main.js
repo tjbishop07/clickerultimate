@@ -1200,7 +1200,7 @@ function autoClick(what) {
   var rnd_num_x = Math.floor(Math.random() * (screen.width / 2));
   var rnd_num_y = Math.floor(Math.random() * 100);
   new_elem.className = "fader";
-  new_elem.style = `width: 15px; height: 15px; position: absolute; margin-left: ${rnd_num_x}px; top: ${screen.height - 100 - rnd_num_y}px`;
+  new_elem.style = `width: 15px; height: 15px; position: absolute; margin-left: ${rnd_num_x}px; top: ${screen.height - 200 - rnd_num_y}px`;
   new_elem.innerHTML =
     '          <svg viewBox="0 0 15 15" enable-background="new 0 0 20 20" class="w-3 h-3">' +
     '              <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601' +
