@@ -38,6 +38,7 @@
     "tailwindcss": "^2.0.4"
   },
   "dependencies": {
+    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
     "electron-squirrel-startup": "^1.0.0",
     "sound-play": "^1.1.0",
     "update-electron-app": "^2.0.1"
@@ -47,24 +48,11 @@
       "packagerConfig": {},
       "makers": [
         {
-          "name": "@electron-forge/maker-squirrel",
+          "name": "@electron-forge/maker-dmg",
           "config": {
-            "name": "Clicker Ultimate"
+            "background": "./bg.png",
+            "format": "ULFO"
           }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
         }
       ]
     }
