@@ -418,13 +418,13 @@ function sendMessages() {
   else if (message.type == "tutorial") elem += "msgTutorial";
 
   elem +=
-    '<li class="mb-2 z-9">' +
+    '<li class="mb-2">' +
     '<div class="relative pb-8">' +
     '  <div class="relative flex items-end">' +
-    '    <div class="relative z-10 bg-white bg-opacity-25 rounded-full p-1">' +
+    '    <div class="relativebg-white bg-opacity-25 rounded-full p-1">' +
     '      <img class="h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center" src="system.jpg" alt="">' +
     "    </div>" +
-    '    <div class="min-w-0 flex-1 backdrop bg-gray-900 bg-opacity-25 p-4 z-9 -ml-4 pl-10 text-white rounded-lg">' +
+    '    <div class="min-w-0 flex-1 backdrop bg-gray-900 bg-opacity-25 p-4 z-9 -ml-7 pl-10 text-white rounded-lg">' +
     "      <div>" +
     '        <div class="text-sm">' +
     '          <a href="#" class="font-medium opacity-50">System</a>' +
@@ -1200,7 +1200,9 @@ function autoClick(what) {
   var rnd_num_x = Math.floor(Math.random() * (screen.width / 2));
   var rnd_num_y = Math.floor(Math.random() * 100);
   new_elem.className = "fader";
-  new_elem.style = `width: 15px; height: 15px; position: absolute; margin-left: ${rnd_num_x}px; top: ${screen.height - 200 - rnd_num_y}px`;
+  new_elem.style = `width: 15px; height: 15px; position: absolute; margin-left: ${rnd_num_x}px; top: ${
+    screen.height - 200 - rnd_num_y
+  }px`;
   new_elem.innerHTML =
     '          <svg viewBox="0 0 15 15" enable-background="new 0 0 20 20" class="w-3 h-3">' +
     '              <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601' +
@@ -1210,10 +1212,7 @@ function autoClick(what) {
   document.body.appendChild(new_elem);
   setTimeout(() => {
     new_elem.className = "fader fadedOut";
-    setTimeout(
-      () => document.body.removeChild(new_elem),
-      1100
-    );
+    setTimeout(() => document.body.removeChild(new_elem), 1100);
   }, 100);
 
   // audio.play();
@@ -4529,6 +4528,7 @@ function hasParent(what) {
 
 var showAdvancements = true;
 function toggleAdvancements() {
+  document.getElementById("mobile-menu").classList.add("hidden");
   if (showAdvancements) {
     document.getElementById("panelAdvancements").classList.remove("hidden");
     showAdvancements = false;
@@ -4540,6 +4540,7 @@ function toggleAdvancements() {
 
 var showGameDetails = true;
 function toggleSettings() {
+  document.getElementById("mobile-menu").classList.add("hidden");
   if (showGameDetails) {
     document.getElementById("panelGameDetails").classList.remove("hidden");
     showGameDetails = false;
@@ -4579,6 +4580,17 @@ function togglePrestige() {
   } else {
     document.getElementById("panelPrestige").classList.add("hidden");
     showPrestige = true;
+  }
+}
+
+var showMainMenu = true;
+function toggleMainMenu() {
+  if (showMainMenu) {
+    document.getElementById("mobile-menu").classList.remove("hidden");
+    showMainMenu = false;
+  } else {
+    document.getElementById("mobile-menu").classList.add("hidden");
+    showMainMenu = true;
   }
 }
 
