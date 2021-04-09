@@ -30,7 +30,12 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-top: 60px
+  padding-top: 60px;
+
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 .fader {
@@ -147,12 +152,6 @@ hr {
   height: 1vh;
 }
 
-/* Resource-related interface */
-#ResourcesArea {
-  width: calc(50vw - 30px);
-  overflow-y: auto;
-}
-
 .rsRow {
   width: 100%;
   display: inline-block;
@@ -239,12 +238,6 @@ hr {
 
 #CurrentDiamondBar {
   background-color: steelblue;
-}
-
-/* Jobs-related interface */
-#JobsArea {
-  width: calc(50vw - 30px);
-  overflow-y: auto;
 }
 
 .jbTitle {

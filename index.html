@@ -55,7 +55,7 @@
               <a href="javascript:void(0)" onclick="save()" class="hover:bg-gray-700 hover:text-white text-white p-3 rounded-md text-sm font-medium mr-2">Save</a>
             </div>
         </div>
-        <div class="hidden md:block md:ml-4">
+        <div class="ml-4">
           <div class="flex items-center">
             <span class="m-3">Autosave</span>
             <button type="button" onclick="toggleAutosave()" class="mr-5 bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none" aria-pressed="false">
@@ -352,17 +352,15 @@
     </div>
   </section>
 
-<div class="grid grid-cols-2 gap-10 p-4 z-1">
+<div class="grid md:grid-cols-2 md:gap-10 p-4 z-1">
 
-    <div id="ResourcesArea" class="p-4 pt-10">
-      <div class="fixed w-1/2">
+    <div id="ResourcesArea" class="">
         <ul id="ResourcesContainer" class="grid grid-cols-3 gap-4"></ul>
-      </div>
     </div>
 
-    <div id="JobsArea" class="pl-28 pr-4 pt-10">
+    <div id="JobsArea" class="">
 
-        <ul id="topMessagesContainer" class="select-none flex flex-col"></ul>
+        <ul id="topMessagesContainer" class="select-none flex flex-col sm:pt-4"></ul>
 
         <div id="WorkersTitle" class="jbTitle locked">Workers</div>
         <div id="WorkersContainer" class="grid grid-cols-3 gap-1 py-3">
